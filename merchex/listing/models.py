@@ -13,6 +13,7 @@ class Band(models.Model):
     official_homepage = models.fields.URLField(null=True, blank=True)
 
 
+
     class Genre(models.TextChoices):
         HIP_HOP = 'HH'
         SYNTH_POP = 'SP'
@@ -24,7 +25,7 @@ class Band(models.Model):
         return self.name
     
 
-    
+
 class Listings(models.Model):
     title = models.fields.CharField(max_length=100)
     band = models.ForeignKey(Band, null=True, on_delete=models.SET_NULL)

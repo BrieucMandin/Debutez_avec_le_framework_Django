@@ -23,4 +23,6 @@ urlpatterns = [
     path('hello/', views.hello),
     path('about-us/', views.about),
     path('listings/', views.listings),
+    path('bands/', views.band_list, name='band-list'),  # mise à jour du chemin et de la vue
+    path('bands/<int:id>/', views.band_detail, name='band-detail')
 ]

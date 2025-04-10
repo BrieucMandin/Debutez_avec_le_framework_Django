@@ -16,6 +16,17 @@ def listings(request):
     listings = Listings.objects.all()
     return render(request, 'listing/listings.html', {'listings': listings})
 
+def band_list(request):
+    bands = Band.objects.all()
+    return render(request, 'listing/band_list.html', {'bands': bands})
+
+def band_detail(request, id):
+    band = Band.objects.get(id=id)
+    return render(request, 'listing/band_detail.html', {'band': band,
+                                                        'id':id})
+
+
+
 
 
 
