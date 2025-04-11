@@ -5,6 +5,7 @@ from listing.models import Listings
 from listing.forms import ContactUsForm
 from listing.forms import CreateAGroup
 from listing.forms import BandForm
+from listing.forms import ListingsForm
 from django.core.mail import send_mail
 from django.shortcuts import redirect 
 
@@ -21,6 +22,11 @@ def listings(request):
     listings = Listings.objects.all()
     return render(request, 'listing/listings.html', {'listings': listings})
 
+def listings_detail(request, id):
+    listing = Listings.objects.get(id=id)
+    return render(request, 'listing/listings_detail.html', {'listing': listing,'id':id})
+
+
 def band_list(request):
     bands = Band.objects.all()
     return render(request, 'listing/band_list.html', {'bands': bands})
@@ -29,6 +35,7 @@ def band_detail(request, id):
     band = Band.objects.get(id=id)
     return render(request, 'listing/band_detail.html', {'band': band,
                                                         'id':id})
+
 
 
 def contact(request):
@@ -111,6 +118,21 @@ def band_create_example(request):
 
 
    return render(request,'listing/band_create_example.html',{'form': form})
+
+def listings_create(request):
+    if request.method == 'POST':
+        form = ListingsForm(request.POST)
+        if form.is_valid():
+            # créer une nouvelle « Listings » et la sauvegarder dans la db
+            listings = form.save()
+            # redirige vers la page de détail du groupe que nous venons de créer
+            # nous pouvons fournir les arguments du motif url comme arguments à la fonction de redirection
+            return redirect('listings-detail', listings.id)
+        
+    else:
+        form = ListingsForm()
+
+    return render(request,'listing/listings_create.html',{'form': form})
 
 
 

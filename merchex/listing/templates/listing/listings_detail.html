@@ -1,0 +1,12 @@
+{% extends 'listing/base.html' %}
+
+{% block content %}
+
+<h2>Title : {{ listing.title }}</h2>
+
+<ul>
+ <li>Groupe associée : {{ listing.band }}</li>
+
+<a href="{% url 'listings' %}">Retour à toutes les annonces</a>
+
+{% endblock %}

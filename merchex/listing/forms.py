@@ -3,6 +3,7 @@
 from django import forms
 from django.core.validators import MinValueValidator, MaxValueValidator
 from .models import Band  
+from .models import Listings
 
 
 
@@ -33,11 +34,11 @@ class BandForm(forms.ModelForm):
             'biography': forms.Textarea(attrs={'rows': 4, 'cols': 40}),
         }
 
+class ListingsForm(forms.ModelForm):
+    class Meta:
+        model = Listings
+        fields = '__all__'
 
 
 
-def band_create(request):
-   form = BandForm()
-   return render(request,
-            'listings/band_create.html',
-            {'form': form})
+
