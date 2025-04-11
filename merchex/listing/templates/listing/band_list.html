@@ -9,6 +9,12 @@
 <ul>
  {% for band in bands %}
  <li><a href="/bands/{{ band.id }}/">{{ band.name }}</a></li>
+ <p>
+    - <a href="{% url 'band-change' band.id %}">[modifier]</a>
+    ; -<a href="{% url 'band-delete' band.id %}">[suprimer]</a>
+ </p>
+
+ 
  {% endfor %}
 </ul>
 
