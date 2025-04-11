@@ -24,5 +24,10 @@ urlpatterns = [
     path('about-us/', views.about),
     path('listings/', views.listings),
     path('bands/', views.band_list, name='band-list'),  # mise à jour du chemin et de la vue
-    path('bands/<int:id>/', views.band_detail, name='band-detail')
+    path('bands/<int:id>/', views.band_detail, name='band-detail'),
+    path('contact-us/', views.contact, name='contact'),
+    path('email-sent/', views.email_sent, name='email-sent'),
+    path('bands/add/', views.band_create, name='band-create'),
+    path('bands/add2/', views.band_create_example, name='band-create-example'),
+
 ]

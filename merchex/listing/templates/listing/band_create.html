@@ -1,0 +1,16 @@
+
+
+{% extends 'listing/base.html' %}
+
+ {% block content %}
+<h1>Créer un Groupe</h1>
+
+<p>Information à propos du groupe ?</p>
+
+<form action="" method="post" novalidate>
+{% csrf_token %}
+{{ form.as_p }}
+<input type="submit" value="Envoyer">
+</form>
+
+{% endblock %}
